@@ -1,0 +1,7 @@
+.card {
+  @apply bg-slate-200 p-4 border w-48 rounded-md m-2 shadow-md;
+}
+
+.card_wrapper {
+  @apply flex flex-col items-center justify-center;
+}
