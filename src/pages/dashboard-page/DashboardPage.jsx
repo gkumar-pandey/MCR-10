@@ -1,4 +1,5 @@
 import { StockCard } from "../../components";
+import { Container } from "../../components/container/container";
 import { useInventory } from "../../context/inventory-context";
 
 const DashboardPage = () => {
@@ -12,11 +13,13 @@ const DashboardPage = () => {
     0
   );
   return (
-    <div className=" flex flex-row p-4 ">
-      <StockCard value={totalStock} text={"Total Stock"} />
-      <StockCard value={totalDelivered} text={"Total Delivered"} />
-      <StockCard value={totalLowStock} text={"Low Stock Items"} />
-    </div>
+    <Container>
+      <div className=" flex flex-row p-4 ">
+        <StockCard value={totalStock} text={"Total Stock"} />
+        <StockCard value={totalDelivered} text={"Total Delivered"} />
+        <StockCard value={totalLowStock} text={"Low Stock Items"} />
+      </div>
+    </Container>
   );
 };
 

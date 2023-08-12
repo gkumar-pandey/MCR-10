@@ -22,6 +22,7 @@ export const FilterComp = () => {
           defaultValue={"all"}
           name="department"
           value={filter.department}
+          className="py-1 px-2 cursor-pointer focus:outline-none border rounded border-gray-900 "
         >
           <option value={"all"}>All Department</option>
           <option value={"kitchen"}>Kitchen</option>
@@ -30,13 +31,23 @@ export const FilterComp = () => {
         </select>
       </div>
       <div>
-        <label>
-          <input type="checkbox" name="lowStock" onChange={onChangeHandler} />
+        <label className=" flex items-center gap-1 ">
+          <input
+            className=" cursor-pointer"
+            type="checkbox"
+            name="lowStock"
+            onChange={onChangeHandler}
+          />
           Low Stock Items
         </label>
       </div>
       <div>
-        <select name="sortBy" defaultValue={"name"} onChange={onChangeHandler}>
+        <select
+          className="py-1 px-2 cursor-pointer focus:outline-none border rounded border-gray-900"
+          name="sortBy"
+          defaultValue={"name"}
+          onChange={onChangeHandler}
+        >
           <option value={"name"}>Name</option>
           <option value={"price"}>Price</option>
           <option value={"stock"}>Stock</option>

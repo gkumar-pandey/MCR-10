@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { inventoryData } from "../staticData/Static-data";
 import { sortData } from "../utils/filter";
 
 const inventoryContext = createContext();
 
 export const InventoryContextProvider = ({ children }) => {
-  const [data, setData] = useState(inventoryData);
+  const [data, setData] = useState("");
   const [filter, setFilter] = useState({
     department: "all",
     lowStock: false,
-    sortBy: ""
+    sortBy: "name"
   });
 
   const filterData = (data) => {
@@ -36,6 +36,21 @@ export const InventoryContextProvider = ({ children }) => {
 
   const tableData = filterData(data);
 
+  const addProduct = (product) => {
+    const updateData = [product, ...data];
+    setData(updateData);
+    localStorage.setItem("data", JSON.stringify(updateData));
+  };
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("data"));
+    if (data) {
+      setData(data);
+    } else {
+      setData(inventoryData);
+    }
+  }, []);
+
   return (
     <inventoryContext.Provider
       value={{
@@ -43,7 +58,8 @@ export const InventoryContextProvider = ({ children }) => {
         filter,
         setFilter,
         setData,
-        tableData
+        tableData,
+        addProduct
       }}
     >
       {children}

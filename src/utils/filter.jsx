@@ -6,4 +6,8 @@ export const sortData = (data, type) => {
   if (type === "stock") {
     return data.sort((a, b) => a.stock - b.stock);
   }
+
+  if (type === "name") {
+    return data.sort((a, b) => a.name.localeCompare(b.name));
+  }
 };
